@@ -1,15 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    {%for post in post%}
-    {{post.title}}
-    <img src="{{post.cover.url}}" alt="Image" >
-    {%endfor%}
-</body>
-</html>
+{% extends "post/base.html" %}
+
+
+{% block content %}
+
+<div class="jumbotron">
+
+
+        {% for post in post %}
+
+        <article class="media content-section">
+            <img src="{{post.account_user.profile.image.url}}" class="rounded-circle article-img" alt="">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a href="#" class="mr-2">{{ post.account_user }}</a>
+    
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+    
+                </div>
+    
+    
+    <!-- make this a dropdown or something -->
+    
+    
+    
+    
+                <p class="article-content">{{ post.title }}</p>
+    
+            </div>
+        </article>
+        <div class="card-row">
+        <div class="card">
+                <img src="{{post.cover.url}}"  class="card-img" >
+            </div>
+    
+        </div>
+    
+        {% endfor %}
+    
+    
+
+</div>
+
+
+{% endblock %}
