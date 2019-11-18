@@ -1,0 +1,78 @@
+{% extends "post/layout.html" %}
+
+
+{% block content %}
+
+<div class="jumbotron">
+
+
+    
+    <article class="media content-section">
+        <img src="{{object.account_user.profile.image.url}}" class="rounded-circle article-img" alt="">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a href="#" class="mr-2">{{ object.account_user }}</a>
+
+                <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+
+            </div>
+
+
+            <!-- make this a dropdown or something -->
+
+            
+            <small class="article-content"><a href="{% url 'post-comment' post.id %}"> Comments: {{ user.comments.count }}</a></small>
+            
+            {% for comment in user.comments.all %}
+                            
+            
+            <div class="">
+                <small>{{comment.user}}</small>
+                <div class="date">{{ comment.created_date }}</div>
+
+                <p>{{ comment.text|linebreaks }}</p>
+            </div>
+            {% empty %}
+
+
+            <p>No comments here yet :(</p>
+
+            {% endfor %}
+
+
+
+            <p class="article-content">{{ object.title }}</p>
+
+
+            <div class="card">
+                    <img src="{{post.cover.url}}" class="card-img">
+        
+        
+        
+        
+        
+         
+        
+        
+                
+                </div>
+        
+            </div>
+
+        </div>
+    </article>
+
+
+    </div>
+
+
+    
+
+
+
+
+
+</div>
+
+
+{% endblock %}

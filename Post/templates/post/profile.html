@@ -1,0 +1,49 @@
+{% extends 'post/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="jumbotron">
+  <div class="content-section">
+    <div class="media">
+      <img class="rounded-circle account-img" src="{{ post.user.profile.image.url }}">
+      <div class="media-body">
+        <h2 class="account-heading">{{ post.user.username }}</h2>
+        <p class="text-secondary">{{ post.user.email }}</p>
+        
+      </div>
+    </div>
+</div>
+    <!-- FORM HERE -->
+
+    <form  method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Profile Info</legend>
+          
+          <div class="jumbotron">
+
+              {{ p_form|crispy }}
+
+
+          </div>
+
+
+
+
+        
+
+              
+         
+
+      </fieldset>
+      <div class="form-group">
+          <button class="btn btn-outline-info " type="submit">Update</button>
+
+      </div>
+  </form>
+
+
+
+  </div>
+
+{% endblock %}

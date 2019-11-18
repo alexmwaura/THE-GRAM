@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    {% if title %}
+        <title>The-Gram - {{ title }}</title>
+    {% else %}
+        <title>The-Gram</title>
+    {% endif %}
+
+    {% block styles %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Font Awesome -->
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./CSS/styles.css">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/js/mdb.min.js"></script>
+    
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+    {% endblock %}
+
+
+    
+</head>
+<body>
+     {% include "navbar.html" %} <br> <hr>   
+
+
+     <main role="main" class="container">
+            <div class="row">
+                <div class="col-md-8">
+
+                    {% if messages %}
+                    {% for message in messages %}
+
+                    <div class="alert alert-{{message.tags}}">
+                        {{ message }}
+                    </div>
+
+
+                    {% endfor %}
+                    {% endif %}
+
+
+                    {% block content %}{% endblock %}
+        
+                </div>
+        
+                
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+   
+
+
+    
+<style>
+
+h3,h1,h2,h4,h5,h6{
+    color: #444444;
+}
+body{
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+}
+
+ul{
+    margin: 0%;
+}
+.bg-steel{
+    background-color: rgb(78, 65, 32);
+}
+.site-header .navbar-nav .nav-link{
+    color: #cbd5db;
+}
+
+.site-header.navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+.site-header .navbar-nav .nav-link.active{
+    font-weight: 500;
+}
+.content-section{
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom:20px ;
+}
+.article-title{
+    color: #444444;
+}
+a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+}
+.article-content {
+    white-space: pre-line;
+}
+.article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+}
+
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata a:hover {
+    color:#333;
+    text-decoration: none;
+}
+
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right:20px ;
+    margin-bottom: 16px;
+}
+.account-heading {
+    font-size:2.5rem;
+}
+
+</style>
+
+
+</body>
+</html>
