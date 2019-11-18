@@ -1,3 +1,4 @@
+from decouple import config
 """
 Django settings for Instagram project.
 
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'Instagram.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instagram',
+        'NAME': 'insta',
         'USER':'alex',
         'PASSWORD':'32915974',
     }
@@ -142,3 +143,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'insta-home'
 LOGIN_URL = 'login'
+
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
