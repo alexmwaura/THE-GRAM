@@ -1,26 +1,42 @@
-{% extends 'post/base.html' %}
+{% extends 'post/layout.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class = 'jumbotron ' >
 
-        <div class="content-section">
-                <form action="#" method="POST">
-                    {% csrf_token %}
-                    <fieldset class="form-group">
-                        <legend class="border-bottom mb-4">Add comment</legend>
-                        <div class="card">
-                            <div class="card-body">
-                                    {{ form|crispy }}
-                                   <button type="submit" value="Save" class="btn btn-success">Submit</button> 
-                                    </div>
 
-                        </div>
-                    </fieldset>
-             
-                </form>
-          
-            </div>
+
+
+<div class = 'card-body ' >
+<div class="card-column">
+    <div class="col-md-6">
+            <img src="{{post.cover.url}}" class="card-img">
+
+    </div>
+
+
+    <div class="">
+            <div class="content-section">
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Add comment</legend>
+                            <div class="card">
+                                <div class="card-body">
+                                        {{ form|crispy }}
+                                       <button type="submit" value="Save" class="btn btn-success">Submit</button> 
+                                        </div>
+    
+                            </div>
+                        </fieldset>
+                 
+                    </form>
+              
+                </div>
+
+    </div>
+
+</div>
+
 
 </div>
 
