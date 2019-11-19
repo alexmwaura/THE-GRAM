@@ -1,0 +1,93 @@
+{% extends "post/base.html" %}
+
+
+{% block content %}
+
+<div class="jumbotron">
+
+
+
+    {% for post in post %}
+
+    <article class="media content-section">
+        <img src="{{post.account_user.profile.image.url}}" class="rounded-circle article-img" alt="">
+        <div class="media-body">
+            <div class="article-metadata">
+                {% if current_user == post.user %}
+                <a href="{% url 'post-update' post.id %}" class="btn btn-default">Update Post</a>
+               
+                <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                {% endif %}
+            </div>
+
+
+            <!-- make this a dropdown or something -->
+
+            <a href="{% url 'post-comment' post.id %}"> Comment</a>
+
+
+
+            <p class="article-content"><a href="{% url 'post-detail' post.id %}" class="article-title">{{ post.title }}</a></p>
+
+
+
+
+        </div>
+    </article>
+    <div class="card-row">
+        <div class="card">
+            <img src="{{post.cover.url}}" class="card-img">
+
+
+                                                <div class="card-footer">
+                                            Comments: {{ user.comments.count }}
+                                            
+                                            
+                                            
+                            
+                                            {% for comment in user.comments.all %}
+                            
+                            
+                                            
+                                            <div class="">
+                                                <small>{{comment.user}}</small>
+                                                <div class="date">{{ comment.created_date }}</div>
+                            
+                                                <p>{{ comment.text|linebreaks }}</p>
+                                            </div>
+                                            {% empty %}
+                            
+                            
+                                            <p>No comments here yet :(</p>
+                            
+                                            {% endfor %}
+                            
+                                            
+                                         
+                                            
+                                       
+                                        
+
+
+                                        </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+    {% endfor %}
+
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

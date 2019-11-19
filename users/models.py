@@ -13,15 +13,3 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
 
-
-
-class UserFollowing(models.Model):
-    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
-    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers')
-
-    class Meta:
-        unique_together = ('follower', 'following')
-
-    def __unicode__(self):
-        return u'%s follows %s' % (self.follower, self.following)    
-   

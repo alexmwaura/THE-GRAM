@@ -1,9 +1,16 @@
 {% extends 'post/base.html' %}
 {% load crispy_forms_tags %}
+{% load friendshiptags %}
 {% block content %}
 
-<div class="jumbotron">
-  <div class="content-section">
+<div class="card-row">
+
+
+
+
+
+
+  <div class="content-section" >
     <div class="media">
       <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
       <div class="media-body">
@@ -22,20 +29,13 @@
           
 
 
-          <div class="jumbotron">
+       
 
               {{ u_form|crispy }}
 
-
-          </div>
-
-
-              
-         <div class="jumbotron">
-
             {{ p_form|crispy }}
 
-         </div>
+       
 
 
         

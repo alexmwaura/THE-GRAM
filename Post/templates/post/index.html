@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="jumbotron">
+<div class="jumbotron jumbotron-fluid">
 
 
 
@@ -14,8 +14,7 @@
         <div class="media-body">
             <div class="article-metadata">
                 {% if current_user == post.user %}
-                <a href="{% url 'post-update' post.id %}" class="mr-2">{{ post.account_user }}</a>
-               
+                <h2 class="mr-2">{{ post.account_user }}</h2>
                 <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                 {% endif %}
             </div>
@@ -23,11 +22,12 @@
 
             <!-- make this a dropdown or something -->
 
-            <a href="{% url 'post-comment' post.id %}"> Comment</a>
 
 
 
-            <p class="article-content"><a href="{% url 'post-detail' post.id %}" class="article-title">{{ post.title }}</a></p>
+            <p class="article-content"><a href="{% url 'post-detail' post.id %}"
+                    class="article-title">{{ post.title }}</a></p>
+
 
 
 
@@ -40,19 +40,32 @@
 
 
             <div class="card-footer">
-                Comments: {{ user.comments.count }}
 
 
-                {% for comment in user.comments.all %}
+
+                <a href="{% url 'like' post.pk %}" class="btn btn-success">{{post.like}} Like</a><br>
+                <a href="{% url 'dislike' post.pk %}" class="btn btn-danger">{{post.dislike}} Disike</a>
+                <button type="button" class="btn btn-comm"><i class="fas fa-comments pr-1"></i> <a
+                        href="{% url 'post-comment' post.id %}"> Comment</a></button>
+                        
 
 
-                
+                <a href="{% url 'follow'   %}">Follow</a>
+
+
+                {% for comment in post.comment_set.all %}
+
+
+
+
+
                 <div class="">
                     <small>{{comment.user}}</small>
                     <div class="date">{{ comment.created_date }}</div>
 
                     <p>{{ comment.text|linebreaks }}</p>
                 </div>
+
                 {% empty %}
 
 
@@ -60,11 +73,8 @@
 
                 {% endfor %}
 
-                
-             
-                
-           
-            
+
+
 
 
             </div>
@@ -84,6 +94,10 @@
 
 
 </div>
+
+
+
+
 
 
 
