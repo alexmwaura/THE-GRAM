@@ -13,11 +13,14 @@ urlpatterns = [
     path('post/<int:pk>/',views.PostDetailView.as_view(), name ='post-detail'),
     path('post/<int:pk>/update',views.PostUpdateView.as_view(), name ='post-update'),
 
-    path('post/comment/<int:pk>/',views.CreateComment.as_view(), name ='post-comment'),
+    path('post/comment/<int:pk>/',views.comment, name ='post-comment'),
 
 
     path('post/new/', views.CreatePost.as_view(), name='create-post'),
 
+    path (r'^search/',views.search_results,name= 'search_results'),
+    path('like/<int:id>',views.upvote,name='like'),
+    path('dislike/<int:id>',views.downvote,name='dislike')
 
 
 ]
