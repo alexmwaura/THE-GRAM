@@ -12,13 +12,14 @@ import datetime
 
 
 class Post(models.Model):
-    profile_user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts',default = timezone.now)
+    profile_user = models.ForeignKey(Profile, on_delete=models.CASCADE,)
 
     title = models.CharField(max_length = 30)
     cover = models.ImageField(upload_to = 'media/images')
     account_user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
     date_posted = models.DateField(auto_now=True) 
-    rating_count = models.IntegerField(default=0)
+    like = models.IntegerField(default=0)
+    dislike = models.IntegerField(default=0)
 
 
 
@@ -33,20 +34,24 @@ class Post(models.Model):
 
 
 
-
     def get_absolute_url(self):
         return reverse('insta-home',kwargs={'date_posted':self.date_posted})
 
 
-
+    @classmethod
+    def get_user(cls,account_user):
+        post = cls.objects.filter(account_user__username__icontains = account_user)
+        return post
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments',)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='posts',)  
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)  
     text = models.TextField(max_length=250)
     created_date = models.DateTimeField(default=timezone.now)
-    approved_comment = models.BooleanField(default=False)
+
+
 
 
 
@@ -54,9 +59,7 @@ class Comment(models.Model):
         ordering = ['created_date']  
 
 
-    def approve(self):
-        self.approved_comment = True
-        self.save()
+
 
 
 
@@ -68,14 +71,15 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return reverse('insta-home',)
 
-class FollowersAndFollowing(models.Model):
-    """
-    List of followers and following
-    """
-    
-    followed_by = models.ForeignKey(User, on_delete=models.CASCADE,  related_name='followed_by')
-    followed_to = models.ForeignKey(User, on_delete=models.CASCADE,  related_name='followed_to')
-    created_date = models.DateTimeField(blank=True, null=True)
+    @classmethod
+    def get_comments(cls,id):
+        comments = cls.objects.all()
+        return comments
 
-    def __str__(self):
-        return self.followed_by.first_name + '-' + str(self.followed_to.first_name)        
+    @classmethod
+    def get_post_comments(cls,pk):
+        post = Post.objects.get(pk=pk)
+        comments = []
+        all_comments = Comment.objects.filter(post_id = post.id).all()
+        comments += all_comments
+        return comments    
