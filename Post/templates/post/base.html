@@ -55,7 +55,7 @@
                             <div class="navbar-nav">
                                     {% if user.is_authenticated %}
 
-                                    <div class="btn btn-danger btn-lg dropdown-toggle" type="button">
+                                    <div class="btn btn-cyan" type="button">
                                             <a class="btn btn-default" href="{% url 'profile' %}" class="nav-item nav-link">Update Profile</a>
                                             
                                             
@@ -65,8 +65,9 @@
                                     {% endif %}    
                                 </div>
                         <div class="jumbotron">
+                            
 
-                                <form  role="search" action="{% url 'search_results' %}"  class="form-inline md-form mr-auto mb-4">
+                                <form  role="search" action="{% url 'search_results' %}"  class="form-inline">
                                     
                                                   
                                     

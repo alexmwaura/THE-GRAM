@@ -15,7 +15,7 @@ from . forms import CommentForm
 # Create your views here.
 
 
-
+@login_required
 def index(request):
     post = Post.objects.all()
     comment = Comment.objects.all()
@@ -56,17 +56,8 @@ class PostUpdateView(LoginRequiredMixin, UpdateView,UserPassesTestMixin):
         return False    
 
 
-# class CreateComment(LoginRequiredMixin, CreateView,UserPassesTestMixin):
-#     model = Comment
-#     fields = ['text']
 
-#     def form_valid(self, form):
-#         form.instance.user= self.request.user
-#         form.instance.post = Post.objects.get(id=self.request.user.pk)
-
-#         form.save()
-#         return redirect('insta-home')
-
+@login_required
 def comment(request,pk):
     current_user = request.user
     post = Post.objects.get(pk=pk)
@@ -104,37 +95,6 @@ class CreatePost(LoginRequiredMixin, CreateView,UserPassesTestMixin):
 
         return redirect('insta-home')
 
-# def product_like(request, id):
-# 	get_product = get_object_or_404(Post, id=id)
-# 	rating_status = {}
-# 	if request.is_ajax:
-# 		if request.user in get_product.user.all():
-# 			get_product.rating_count -= 1
-# 			get_product.user.remove(request.user)
-# 			get_product.save()
-# 			rating_status['Removed'] = "True"
-# 			rating_status['count'] = get_product.rating_count
-# 			return HttpResponse(JsonResponse(rating_status))
-# 		else:
-# 			get_product.rating_count += 1
-# 			get_product.user.add(request.user)
-# 			get_product.save()
-# 			rating_status['Success'] =  "True"
-# 			rating_status['count'] = get_product.rating_count
-# 			return HttpResponse(JsonResponse(rating_status))
-# 	else:
-# 		rating_status['Success'] =  "False"
-# 		return HttpResponse(JsonResponse(rating_status))
-# 	return request       
-
- 
-
-# def get_followers(request):
-
-#     user_ids = FollowersAndFollowing.objects.filter(followed_by=request.user).values_list('id',flat=True)
-#     Post.objects.filter(post_created_user__in = user_ids)
-
-#     return redirect ('profile')    
 
 
 @login_required
@@ -150,7 +110,7 @@ def search_results(request):
 
     return render(request,'post/search.html',{'message':message})
 
-
+@login_required
 def upvote(request,id):
     post = Post.objects.get(id =id)
     post.like += 1
@@ -159,7 +119,7 @@ def upvote(request,id):
     
 
     return redirect('insta-home')   
-
+@login_required
 def downvote(request,id):
     post = Post.objects.get(id =id)
 

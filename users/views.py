@@ -11,7 +11,6 @@ from .models import Profile
 # Create your views here.
 
 def register(request):
-    following =Follow.objects.following(request.user)
     if request.method == 'POST':
         form = UserRegestrationForm(request.POST)
 
@@ -29,7 +28,7 @@ def register(request):
     else:
         form = UserRegestrationForm()
 
-    return render(request, 'users/register.html',{'form':form,'following':following})
+    return render(request, 'users/register.html',{'form':form,})
 
 @login_required
 def profile(request):
@@ -59,10 +58,7 @@ def profile(request):
 
     return render(request,'users/profile.html',context,)        
 
-def get_followers(request):
-    other_user = User.objects.get()
-    following =Follow.objects.following(request.user)  
 
-    return redirect('insta-home')
+
 
    

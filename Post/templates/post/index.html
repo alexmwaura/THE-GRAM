@@ -14,7 +14,7 @@
         <div class="media-body">
             <div class="article-metadata">
                 {% if current_user == post.user %}
-                <h2 class="mr-2">{{ post.account_user }}</h2>
+                <h2 class="mr-2"><a href="{% url 'post-detail' post.id %}">{{ post.account_user }}</a></h2>
                 <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                 {% endif %}
             </div>
@@ -25,8 +25,7 @@
 
 
 
-            <p class="article-content"><a href="{% url 'post-detail' post.id %}"
-                    class="article-title">{{ post.title }}</a></p>
+            <p class="article-content">{{ post.title }}</p>
 
 
 
@@ -48,9 +47,8 @@
                 <button type="button" class="btn btn-comm"><i class="fas fa-comments pr-1"></i> <a
                         href="{% url 'post-comment' post.id %}"> Comment</a></button>
                         
+                        
 
-
-                <a href="{% url 'follow'   %}">Follow</a>
 
 
                 {% for comment in post.comment_set.all %}
