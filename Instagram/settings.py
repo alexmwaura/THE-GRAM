@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'Post.apps.PostConfig',
     'users.apps.UserConfig',
-    'friendship',
     'crispy_forms',
     'django.contrib.auth',
     'django.contrib.contenttypes',

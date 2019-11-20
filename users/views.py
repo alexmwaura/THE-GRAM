@@ -4,7 +4,7 @@ from .forms import UserRegestrationForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import User
-from friendship.models import Friend, Follow, Block
+# from friendship.models import Friend, Follow, Block
 from .models import Profile
 
 
