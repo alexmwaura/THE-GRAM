@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.http import JsonResponse
 import json
 from django.conf import settings
-from friendship.exceptions import AlreadyExistsError
 from django.http import HttpResponse
 from . forms import PostForm
 from django.views.generic import  DetailView,UpdateView,CreateView
