@@ -24,7 +24,7 @@ urlpatterns = [
     path('home/<username>/',views.user_detail, name = 'user_follow'),
 
 
-    path(r"^friend<username>",views.friendship_add_friend, name="friendship_add_friend",),
+    # path(r"^friend<username>",views.friendship_add_friend, name="friendship_add_friend",),
 
 ]
 
