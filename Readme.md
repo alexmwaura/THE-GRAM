@@ -1,14 +1,13 @@
 # The Gram
 
->[Alex-MWaura]()  
+>[Alex-MWaura](https://thegram2.herokuapp.com/)  
   
 # Description  
-This is a clone of  Instagram where people share their  images and videos for other users to view. 
-Users can sign up, login, view and post photos, search and follow other users.
+This is a clone of  Instagram where people share their  images for other users to view. 
+Users can sign up, login, view and post photos and search  other users.
 ##  Live Link  
- Click [View Site]()  to visit the site
+ Click [View Site](https://thegram2.herokuapp.com/)  to visit the site
   
-
  
 ## User Story  
   
