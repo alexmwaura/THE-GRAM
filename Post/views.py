@@ -13,16 +13,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 
 from . forms import CommentForm
-from friendship.models import Friend, Follow, FriendshipRequest, Block
-
-
-# Create your views here.
-get_friendship_context_object_name = lambda: getattr(
-    settings, "FRIENDSHIP_CONTEXT_OBJECT_NAME", "user"
-)
-get_friendship_context_object_list_name = lambda: getattr(
-    settings, "FRIENDSHIP_CONTEXT_OBJECT_LIST_NAME", "users"
-)
 
 
 @login_required
@@ -145,36 +135,6 @@ def user_detail(request, username):
     template = 'post/detail.html'
     return render(request, template, {'query':query})
 
-
-@login_required
-def friendship_add_friend(
-    request, to_username, template_name="post/detail.html"
-):
-    """ Create a FriendshipRequest """
-    ctx = {"to_username": to_username}
-
-    if request.method == "POST":
-        to_user = User.objects.get(username=to_username)
-        from_user = request.user
-        try:
-            Friend.objects.add_friend(from_user, to_user)
-        except AlreadyExistsError as e:
-            ctx["errors"] = ["%s" % e]
-        else:
-            return redirect("insta-home")
-
-    return render(request, template_name, ctx)
-
-
-def view_friends(request, username, template_name="post/index.html"):
-    """ View the friends of a user """
-    user = get_object_or_404(User, username=username)
-    friends = Friend.objects.friends(user)
-    return render(request, template_name, {
-        get_friendship_context_object_name(): user,
-        'friendship_context_object_name': get_friendship_context_object_name(),
-        'friends': friends,
-    })
 
 
 
