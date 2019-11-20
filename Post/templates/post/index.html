@@ -3,18 +3,20 @@
 
 {% block content %}
 
-<div class="jumbotron jumbotron-fluid">
 
+
+
+<div class="jumbotron jumbotron-fluid" style="background-color: rgb(243, 241, 236);">
 
 
     {% for post in post %}
 
-    <article class="media content-section">
+    <article class="media content-section" style="background-color: rgb(243, 241, 236);" >
         <img src="{{post.account_user.profile.image.url}}" class="rounded-circle article-img" alt="">
         <div class="media-body">
             <div class="article-metadata">
                 {% if current_user == post.user %}
-                <h2 class="mr-2"><a href="{% url 'post-detail' post.id %}">{{ post.account_user }}</a></h2>
+                <h2 class="mr-2" style="font-size: large;"><a href="{% url 'post-detail' post.id %}">{{ post.account_user }}</a></h2>
                 <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                 {% endif %}
             </div>
@@ -25,7 +27,6 @@
 
 
 
-            <p class="article-content">{{ post.title }}</p>
 
 
 
@@ -36,19 +37,22 @@
     <div class="card-row">
         <div class="card">
             <img src="{{post.cover.url}}" class="card-img">
+            <p class="article-content" style="margin-left: 2%;">{{ post.title }}</p>
 
 
-            <div class="card-footer">
+            <div class="card-footer" style="background-color: rgb(243, 241, 236);">
 
 
 
-                <a href="{% url 'like' post.pk %}" class="btn btn-success">{{post.like}} Like</a><br>
-                <a href="{% url 'dislike' post.pk %}" class="btn btn-danger">{{post.dislike}} Disike</a>
-                <button type="button" class="btn btn-comm"><i class="fas fa-comments pr-1"></i> <a
-                        href="{% url 'post-comment' post.id %}"> Comment</a></button>
+                <a href="{% url 'like' post.pk %}" class="btn aqua-gradient btn-rounded btn-sm my-0 " > <i class="fa fa-heart fa-2x text-
+                    liked" ></i><b>{{ post.like }}</b></a>
+                    
+                <a href="{% url 'dislike' post.pk %}" class="btn btn-deep-orange btn-rounded btn-sm my-0 "  ><i class="fa fa-thumbs-down" aria-hidden="true"></i><b>{{ post.dislike }}</b></a>
+                 <a
+                        href="{% url 'post-comment' post.id %}"><i class="fas fa-comments pr-1"></i></a>
                         
                         
-
+              
 
 
                 {% for comment in post.comment_set.all %}
@@ -57,11 +61,31 @@
 
 
 
-                <div class="">
+                <div class="" >
                     <small>{{comment.user}}</small>
-                    <div class="date">{{ comment.created_date }}</div>
+                    <div  style="background-color:rgb(243, 241, 236);">{{ comment.created_date }}</div>
 
-                    <p>{{ comment.text|linebreaks }}</p>
+                
+
+                    <article class="media content-section" style="background-color: rgb(243, 241, 236);">
+                        <div class="media-body">
+                            <div class="article-metadata">
+                       
+                            </div>
+                
+                            {{ comment.text|linebreaks }}
+                            <!-- make this a dropdown or something -->
+                
+                
+                
+                
+                   
+                
+                
+                
+                
+                        </div>
+                    </article>
                 </div>
 
                 {% empty %}
@@ -82,7 +106,7 @@
 
         </div>
 
-    </div>
+    </div> <br>
 
 
     {% endfor %}

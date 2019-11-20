@@ -20,8 +20,11 @@ urlpatterns = [
 
     path (r'^search/',views.search_results,name= 'search_results'),
     path('like/<int:id>',views.upvote,name='like'),
-    path('dislike/<int:id>',views.downvote,name='dislike')
+    path('dislike/<int:id>',views.downvote,name='dislike'),
+    path('home/<username>/',views.user_detail, name = 'user_follow'),
 
+
+    path(r"^friend<username>",views.friendship_add_friend, name="friendship_add_friend",),
 
 ]
 

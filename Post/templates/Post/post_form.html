@@ -2,17 +2,17 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class = 'jumbotron ' >
+<div class = 'jumbotron' style="background-color:rgb(243, 241, 236);">
 
-        <div class="content-section">
-                <form method="POST" enctype="multipart/form-data">
+        <div class="content-section" style="background-color: rgb(243, 241, 236);">
+                <form method="POST" enctype="multipart/form-data" style="background-color: rgb(243, 241, 236);">
                     {% csrf_token %}
-                    <fieldset class="form-group">
+                    <fieldset class="form-group" >
                         
-                        <div class="card">
+                        <div class="card" style="background-color: rgb(243, 241, 236);">
                             <div class="card-body">
                                     {{ form|crispy }}
-                                   <button type="submit"  class="btn btn-success" value="Save"> Submit</button> 
+                                   <button type="submit"  class="btn btn-dark" value="Save"> Submit</button> 
                                     </div>
 
                         </div>

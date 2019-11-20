@@ -51,54 +51,8 @@
                 </div>
         
                 <div class="col-md-4" >
-                    <div class="content-section" style="background-color:rgb(243, 241, 236);">
-                            <div class="navbar-nav" style="background-color: rgb(243, 241, 236);">
-                                    {% if user.is_authenticated %}
 
-                                            
-                                            
-                                   
-
-                
-                                    {% endif %}    
-                                </div>
-                        <div class="jumbotron" style="background-color: rgb(243, 241, 236);">
-                            
-
-                                
-
-                                
-
-                                Suggested: <br>
-
-
-                                {% for post in post %}<div class="overflow-auto" >
-                                        
-                        
-                                <article class="media content-section" class="d-inline-block bg-primary text-white" style="background-color:rgb(243, 241, 236);" >
-                                        <img src="{{post.account_user.profile.image.url}}" class="rounded-circle article-img" alt="">
-                                        <div class="media-body" >
-                                            <div class="article-metadata" >
-                                                
-                                                <a href="#" class="mr-2">{{ post.account_user }}</a>
-                                
-                                               
-                                                    <br>
-                                               
-                                                   
-
-                                            </div>
-                                
-                                            </div>
-                                <!-- make this a dropdown or something -->
-
-                                        </div>
-                                    </article>
-                                    {% endfor %}
-
-
-
-                        </div>
+               
         
                     </div>
         

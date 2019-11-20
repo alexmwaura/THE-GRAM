@@ -1,12 +1,28 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel  fixed-top transparent">
         <div class="container">
-            
-               <i class="fab fa-instagram pr-1"></i> <a href="{% url 'insta-home'%}" class="btn btn-ins" class="nav-item nav-link">Home</a>
 
-                
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="navbar-toggler-icon"></span>
+            <i class="fab fa-instagram pr-1"></i> <a href="{% url 'insta-home'%}" class="btn btn-ins"
+                class="nav-item nav-link">Home</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <form role="search" action="{% url 'search_results' %}" class="form-inline">
+
+
+
+                <input type="text" class="form-control" required placeholder="Search username" name="username"
+                    style="background-color: rgb(243, 241, 236);">
+
+                <button type="submit" class="btn blue-gradient btn-rounded btn-sm my-0">Search</button>
+
+
+
+            </form>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="navbar-toggler-icon">
+
+
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
@@ -14,21 +30,23 @@
 
                 <div class="navbar-nav ">
                     {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}" class="nav-item nav-link"  style="color: black;">logout</a>
-                    <a href="{% url 'create-post'  %}"  class="nav-item nav-link" style="color: black;">Add Post</a>
+
+                    <a href="{% url 'logout' %}" class="nav-item nav-link" style="color: black;">logout</a>
+                    <a href="{% url 'create-post'  %}" class="nav-item nav-link" style="color: black;">Add Post</a>
+                    <a id="#37474F" href="{% url 'profile' %}" class="nav-item nav-link "
+                        style="color: black;">Update Profile</a>
 
 
-                    
-                   
+
+
                     {% else %}
-                        <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
-                        <a href="{% url 'register' %}" class="nav-item nav-link">Register</a>
+                    <a href="{% url 'login' %}" class="nav-item nav-link" style="color: black;">Login</a>
+                    <a href="{% url 'register' %}" class="nav-item nav-link" style="color: black;">Register</a>
 
-                    {% endif %}    
+                    {% endif %}
                 </div>
             </div>
         </div>
     </nav>
 
 </header>
-

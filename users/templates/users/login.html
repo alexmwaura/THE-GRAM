@@ -2,15 +2,15 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class = 'jumbotron ' ">
+<div class = 'jumbotron ' style="background-color:rgb(243, 241, 236);">
 
-        <div class="content-section" style="background-color: rgb(48, 61, 61); color: #000;">
+        <div class="content-section" style="background-color: rgb(243, 241, 236); color: #000;">
                 <form class="text-center border border-light p-5" action="" method="POST" >
                     {% csrf_token %}
                     <fieldset class="form-group">
                         <legend class="border-bottom mb-4" class="h4 mb-4">Login</legend>
                         <div class="card">
-                            <div class="card-body" style="background-color: rgb(41, 58, 58); color: #000;">
+                            <div class="card-body" style="background-color: rgb(243, 241, 236); color: #000;">
                                     {{ form|crispy }}
 
                             </div>
